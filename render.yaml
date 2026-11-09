@@ -2,14 +2,10 @@ services:
   - type: web
     name: v-solutions
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
-    disk:
-      name: v-solutions-uploads
-      mountPath: /var/data
-      sizeGB: 1
     envVars:
       - key: NODE_ENV
         value: production
@@ -20,6 +16,6 @@ services:
       - key: ADMIN_EMAIL
         sync: false
       - key: UPLOAD_DIR
-        value: /var/data/uploads
+        value: uploads
       - key: MAX_UPLOAD_MB
         value: "10"
